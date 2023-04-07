@@ -6,7 +6,7 @@ This project is an implementation of a PID controller used to stabilize the posi
 
 - NUCLEO-L073RZ devboard
 - MPU6050 accelerometer
-- 2x MG995 servomotor
+- 2x MG995 servomotors
 - webcam
 - Linux-based PC
 
@@ -14,41 +14,41 @@ This project is an implementation of a PID controller used to stabilize the posi
 
 - FSM:
 <pre>
-            ┌─────────────┐
-            │    start    │
-            └──────┬──────┘
-                   │
-            ┌──────▼──────┐
-            │    init     │
-            └──────┬──────┘
-                   │
-            ┌──────▼──────┐
-            │  wait for   ◄────────────────┐
-            │    data     │                │
-            └──────┬──────┘                │
-                   │                       │
-        yes ┌──────▼──────┐ no             │
-       ┌────┤  new ball   ├────┐           │
-       │    │  position?  │    │           │
-       │    └─────────────┘    │           │
-       │                       │           │
-┌──────▼──────┐                │           │
-│ update PID  ├────────────────┤           │
-└─────────────┘                │           │
-                               │           │
-                    yes ┌──────▼──────┐ no │
-                   ┌────┤new platform ├────┤
-                   │    │   angle?    │    │
-                   │    └─────────────┘    │
-                   │                       │
-            ┌──────▼──────┐                │
-            │  calculate  │                │
-            │    angle    │                │
-            └──────┬──────┘                │
-                   │                       │
-            ┌──────▼──────┐                │
-            │ set servos  ├────────────────┘
-            └─────────────┘
+                ┌─────────────┐
+                │    start    │
+                └──────┬──────┘
+                       │
+                ┌──────▼──────┐
+                │    init     │
+                └──────┬──────┘
+                       │
+                ┌──────▼──────┐
+                │  wait for   ◄────────────────┐
+                │    data     │                │
+                └──────┬──────┘                │
+                       │                       │
+            yes ┌──────▼──────┐ no             │
+           ┌────┤  new ball   ├────┐           │
+           │    │  position?  │    │           │
+           │    └─────────────┘    │           │
+           │                       │           │
+    ┌──────▼──────┐                │           │
+    │ update PID  ├────────────────┤           │
+    └─────────────┘                │           │
+                                   │           │
+                        yes ┌──────▼──────┐ no │
+                       ┌────┤new platform ├────┤
+                       │    │   angle?    │    │
+                       │    └─────────────┘    │
+                       │                       │
+                ┌──────▼──────┐                │
+                │  calculate  │                │
+                │    angle    │                │
+                └──────┬──────┘                │
+                       │                       │
+                ┌──────▼──────┐                │
+                │ set servos  ├────────────────┘
+                └─────────────┘
 </pre>
 
 - Machine vision system:\
